@@ -6,20 +6,23 @@ import { useRouter } from 'next/router'
 const NAV_LINKS = [
   { label: 'Find Jobs', href: '/find-jobs' },
   { label: 'Employers', href: '/employers' },
-  { label: 'Candidates', href: '/candidates' },
-  { label: 'Blog', href: '/blogs' },
+  // { label: 'Candidates', href: '/candidates' },
+  { label: 'Partner', href: '#' },
+  
+
+  // { label: 'Blog', href: '/blogs' },
   {
-    label: 'Pages',
+    label: 'About Us',
     href: '#',
     children: [
-      { label: 'Shop', href: '/shop' },
+      // { label: 'Shop', href: '/shop' },
       { label: 'About Us', href: '/about' },
-      { label: 'Pricing', href: '/pricing' },
+      // { label: 'Pricing', href: '/pricing' },
       { label: "FAQ's", href: '/faqs' },
       { label: 'Terms & Conditions', href: '/terms' },
-      { label: 'Invoice', href: '/invoice' },
+      // { label: 'Invoice', href: '/invoice' },
       { label: 'Contact Us', href: '/contact' },
-      { label: '404 Page', href: '/404' },
+      // { label: '404 Page', href: '/404' },
     ],
   },
 ]
@@ -50,7 +53,7 @@ export default function Navbar() {
       }}>
         <div className="container" style={{ display: 'flex', alignItems: 'center', height: '72px', gap: '40px' }}>
           {/* Logo */}
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
+          {/* <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
             <div style={{
               width: 36, height: 36, background: 'var(--primary)',
               borderRadius: 10, display: 'flex', alignItems: 'center',
@@ -60,7 +63,24 @@ export default function Navbar() {
             <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 20, color: 'var(--dark)' }}>
               Talent<span style={{ color: 'var(--primary)' }}>Flow</span>
             </span>
-          </Link>
+          </Link> */}
+
+<Link
+  href="/"
+  style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}
+>
+  <img
+    src="/asset/LOGO-2-removebg-preview.png"
+    alt="TalentFlow Logo"
+    style={{
+      height: '120px',
+      
+      width: 'auto',
+      objectFit: 'contain'
+    }}
+  />
+</Link>
+
 
           {/* Desktop Nav */}
           <nav style={{ display: 'flex', alignItems: 'center', gap: '4px', flex: 1 }} className="desktop-nav">
@@ -130,7 +150,7 @@ export default function Navbar() {
               padding: '8px 18px', fontSize: 15, fontWeight: 600,
               color: 'var(--primary)', border: 'none', background: 'transparent',
               cursor: 'pointer',
-            }}>Log In</Link>
+            }}>Candidate Login </Link>
             <Link href="/register" className="btn btn-primary" style={{ padding: '9px 20px', fontSize: 14 }}>
               Post a Job
             </Link>

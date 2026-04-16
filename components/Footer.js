@@ -40,7 +40,7 @@ export default function Footer() {
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr', gap: 48, paddingBottom: 48, borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
           {/* Brand */}
           <div>
-            <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
+            {/* <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
               <div style={{
                 width: 38, height: 38, background: 'var(--primary)',
                 borderRadius: 10, display: 'flex', alignItems: 'center',
@@ -49,7 +49,23 @@ export default function Footer() {
               <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 22, color: 'var(--white)' }}>
                 Talent<span style={{ color: '#60A5FA' }}>Flow</span>
               </span>
-            </Link>
+            </Link> */}
+            <Link
+  href="/"
+  style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}
+>
+  <img
+    src="/asset/LOGO-2-gray colour.png"
+    alt="TalentFlow Logo"
+    style={{
+      height: '200px',
+      // background:"#fff",
+      
+      width: 'auto',
+      objectFit: 'contain'
+    }}
+  />
+</Link>
             <p style={{ fontSize: 14, lineHeight: 1.7, color: 'var(--gray-500)', maxWidth: 280 }}>
               The world's leading job board connecting talented professionals with world-class companies.
             </p>

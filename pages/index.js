@@ -104,6 +104,61 @@ export default function HomePage({ featuredJobs, categories, stats, testimonials
           </div>
         </section>
 
+
+        {/* About banner  */}
+{/* About banner - Ultra compact, reduced height under image */}
+<section style={{ background: 'linear-gradient(135deg, #F8FAFF 0%, #F0F5FD 100%)', padding: '32px 0' }}>
+  <div className="container">
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 34, alignItems: 'center' }}>
+      
+      {/* Left: Image - much shorter */}
+      <div>
+        <div style={{ position: 'relative', borderRadius: 'var(--radius-xl)', overflow: 'hidden', boxShadow: 'var(--shadow-md)', aspectRatio: '9/8' }}>
+          <img
+            src="/asset/about-banner.png"
+            alt="SIS Global"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+          />
+          <div style={{ position: 'absolute', bottom: 10, left: 10, background: 'rgba(255,255,255,0.9)', padding: '2px 10px', borderRadius: 'var(--radius-full)', fontSize: 11, fontWeight: 600, color: 'var(--primary)' }}>
+             Backed by SIS India Ltd.
+          </div>
+        </div>
+      </div>
+
+      {/* Right: Content - tighter spacing */}
+      <div>
+        <span className="section-tag" style={{ marginBottom: 6, fontSize: 12, padding: '2px 12px' }}>About Company</span>
+        <h2 style={{ fontSize: 'clamp(22px, 3vw, 28px)', fontWeight: 700, marginBottom: 12, lineHeight: 1.2 }}>
+          SIS Global Workforce Solutions
+        </h2>
+        <p style={{ fontSize: 13.5, color: 'var(--gray-700)', lineHeight: 1.5, marginBottom: 12 }}>
+          <strong>SIS Global Workforce Solutions Private Limited</strong> is a new venture of SIS India Ltd., designed to deliver structured and scalable workforce outsourcing solutions.
+        </p>
+        <p style={{ fontSize: 13.5, color: 'var(--gray-700)', lineHeight: 1.5, marginBottom: 12 }}>
+          The company connects skilled talent with trusted employers through a technology-enabled ecosystem – ensuring transparency, efficiency, and reliability.
+        </p>
+        <p style={{ fontSize: 13.5, color: 'var(--gray-700)', lineHeight: 1.5, marginBottom: 16 }}>
+          Backed by SIS India’s legacy, SIS Global transforms manpower outsourcing into an organized, compliant, and digitally driven service model.
+        </p>
+
+        {/* Highlight badges - compact row */}
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 20 }}>
+          {['End-to-End Solutions', 'Structured & Transparent', 'Technology-Driven', 'Faster Turnaround'].map((item) => (
+            <span key={item} className="badge badge-blue" style={{ fontSize: 11, padding: '3px 10px' }}>✓ {item}</span>
+          ))}
+        </div>
+
+        {/* Buttons */}
+        <div style={{ display: 'flex', gap: 12 }}>
+          <button className="btn btn-primary" style={{ padding: '8px 20px', fontSize: 13 }}>Learn More →</button>
+          <button className="btn btn-outline" style={{ padding: '8px 20px', fontSize: 13 }}>Contact Us</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+       
+
         {/* CATEGORIES */}
         <section className="section" style={{ background: 'var(--gray-50)' }}>
           <div className="container">
