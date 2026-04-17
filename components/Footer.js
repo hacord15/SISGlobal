@@ -56,7 +56,7 @@ export default function Footer() {
 >
   <img
     src="/asset/LOGO-2-gray colour.png"
-    alt="TalentFlow Logo"
+    alt="SIS Global Workforce Solutions Logo"
     style={{
       height: '200px',
       // background:"#fff",
@@ -112,7 +112,7 @@ export default function Footer() {
         {/* Bottom */}
         <div style={{ padding: '24px 0', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
           <p style={{ fontSize: 14, color: 'var(--gray-600)' }}>
-            © 2024 TalentFlow. All rights reserved.
+            © 2024 SIS Global Workforce Solutions. All rights reserved.
           </p>
           <div style={{ display: 'flex', gap: 24 }}>
             {['Privacy Policy', 'Terms of Use', 'Cookie Policy'].map((t) => (

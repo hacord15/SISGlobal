@@ -16,7 +16,7 @@ export default function JobDetailPage({ job, related }) {
 
   return (
     <>
-      <Head><title>{job.title} at {job.company} – TalentFlow</title></Head>
+      <Head><title>{job.title} at {job.company} – SIS Global Workforce Solutions</title></Head>
       <Layout>
         <div style={{ background: 'var(--gray-50)', padding: '48px 0' }}>
           <div className="container">

@@ -9,7 +9,7 @@ export default function EmployerDetailPage({ employer, jobs }) {
   if (!employer) return null
   return (
     <>
-      <Head><title>{employer.name} Jobs – TalentFlow</title></Head>
+      <Head><title>{employer.name} Jobs – SIS Global Workforce Solutions</title></Head>
       <Layout>
         {/* Header */}
         <div style={{ background: 'linear-gradient(135deg, #EBF4FF 0%, #F0F7FF 100%)', padding: '48px 0' }}>

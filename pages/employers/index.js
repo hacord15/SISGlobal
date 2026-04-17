@@ -7,7 +7,7 @@ import { EMPLOYERS } from '../../lib/data'
 export default function EmployersPage({ employers, total }) {
   return (
     <>
-      <Head><title>Top Companies – TalentFlow</title></Head>
+      <Head><title>Top Companies – SIS Global Workforce Solutions</title></Head>
       <Layout>
         {/* Hero */}
         <div style={{ background: 'linear-gradient(135deg, #EBF4FF 0%, #F0F7FF 100%)', padding: '56px 0' }}>

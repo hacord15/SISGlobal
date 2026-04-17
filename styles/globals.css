@@ -371,3 +371,23 @@ input, textarea, select { font-family: var(--font-body); }
 
 /* Star rating */
 .stars { display: flex; gap: 2px; color: var(--warning); }
+
+
+/* Navbar responsive overrides */
+@media (max-width: 900px) {
+  .desktop-nav, .desktop-cta { display: none !important; }
+  .mobile-toggle { display: flex !important; }
+}
+
+/* CTA buttons responsive */
+@media (max-width: 640px) {
+  .cta-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  .cta-buttons a {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}

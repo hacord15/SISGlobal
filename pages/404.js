@@ -6,7 +6,7 @@ import Layout from '../components/Layout'
 export default function Custom404() {
   return (
     <>
-      <Head><title>404 – Page Not Found | TalentFlow</title></Head>
+      <Head><title>404 – Page Not Found | SIS Global Workforce Solutions</title></Head>
       <Layout>
         <div style={{
           minHeight: '70vh', display: 'flex', alignItems: 'center', justifyContent: 'center',

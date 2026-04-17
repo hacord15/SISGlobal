@@ -10,7 +10,7 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Satoshi:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
           rel="stylesheet"
         />
-        <meta name="description" content="TalentFlow - The #1 Job Board for Modern Careers" />
+        <meta name="description" content="SIS Global Workforce Solutions - The #1 Job Board for Modern Careers" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body>

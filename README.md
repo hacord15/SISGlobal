@@ -1,4 +1,4 @@
-# TalentFlow — Next.js Job Board
+# SIS Global Workforce Solutions — Next.js Job Board
 
 A full-featured, production-grade job board built with **Next.js (JS)** using **SSR** (Server-Side Rendering) as the primary rendering strategy.
 
@@ -25,7 +25,7 @@ const HeroSearch = dynamic(() => import('../components/csr/HeroSearch'), { ssr: 
 ## Project Structure
 
 ```
-talentflow/
+SIS Global Workforce Solutions/
 ├── components/
 │   ├── csr/                   # Client-only interactive components
 │   │   ├── HeroSearch.js       # Search bar (input state + router)

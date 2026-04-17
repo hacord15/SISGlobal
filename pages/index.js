@@ -1,3 +1,5 @@
+// 
+
 // pages/index.js — Home Page (SSR via getServerSideProps)
 import Head from 'next/head'
 import Link from 'next/link'
@@ -13,17 +15,15 @@ export default function HomePage({ featuredJobs, categories, stats, testimonials
   return (
     <>
       <Head>
-        <title>TalentFlow – Find Your Dream Job</title>
+        <title>SIS Global – Workforce Outsourcing Solutions</title>
       </Head>
       <Layout>
         {/* HERO */}
         <section style={{
           background: 'linear-gradient(135deg, #EBF4FF 0%, #F0F7FF 40%, #E8F1FF 100%)',
-          // background: 'linear-gradient(to bottom, #E6EEFC, #ffffff)' ,
           padding: '30px 0 50px',
           position: 'relative', overflow: 'hidden',
         }}>
-          {/* Decorative circles */}
           <div style={{ position: 'absolute', top: -60, right: -60, width: 300, height: 300, background: 'radial-gradient(circle, rgba(10,101,204,0.12) 0%, transparent 70%)', borderRadius: '50%' }} />
           <div style={{ position: 'absolute', bottom: -40, left: '10%', width: 200, height: 200, background: 'radial-gradient(circle, rgba(10,101,204,0.08) 0%, transparent 70%)', borderRadius: '50%' }} />
 
@@ -49,15 +49,11 @@ export default function HomePage({ featuredJobs, categories, stats, testimonials
                 Connect with top employers and discover opportunities that align with your skills, values, and career goals.
               </p>
               
-
-            
-              {/* CSR Search bar rendered as child */}
               <HeroSearch />
 
-              {/* Popular searches */}
               <div style={{ marginTop: 24, display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'center', flexWrap: 'wrap' }}>
                 <span style={{ fontSize: 14, color: 'var(--gray-600)', fontWeight: 500 }}>Popular:</span>
-                {['UI Designer', 'React Developer', 'Product Manager', 'Data Analyst'].map((term) => (
+                {['Security', 'Healthcare', 'Logistics', 'Warehouse'].map((term) => (
                   <Link key={term} href={`/find-jobs?q=${encodeURIComponent(term)}`} style={{
                     fontSize: 13, fontWeight: 500, padding: '4px 12px',
                     borderRadius: 'var(--radius-full)', background: 'white',
@@ -72,23 +68,20 @@ export default function HomePage({ featuredJobs, categories, stats, testimonials
           </div>
         </section>
 
- 
-
         <img
-  src="/asset/categoryBanner1.png"
-  alt="banner"
-  style={{
-    width: '100%',
-    height: '60vh',
-    maxHeight: '1100px',
-    objectFit: 'cover'
-  }}
-/>
+          src="/asset/categoryBanner1.png"
+          alt="banner"
+          style={{
+            width: '100%',
+            height: 'auto',
+            display: 'block'
+          }}
+        />
 
         {/* STATS BANNER */}
         <section style={{ background: 'var(--primary)', padding: '32px 0' }}>
           <div className="container">
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24, textAlign: 'center' }}>
+            <div className="stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24, textAlign: 'center' }}>
               {[
                 { label: 'Live Jobs', value: stats.jobs },
                 { label: 'Companies', value: stats.employers },
@@ -104,60 +97,49 @@ export default function HomePage({ featuredJobs, categories, stats, testimonials
           </div>
         </section>
 
-
-        {/* About banner  */}
-{/* About banner - Ultra compact, reduced height under image */}
-<section style={{ background: 'linear-gradient(135deg, #F8FAFF 0%, #F0F5FD 100%)', padding: '32px 0' }}>
-  <div className="container">
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 34, alignItems: 'center' }}>
-      
-      {/* Left: Image - much shorter */}
-      <div>
-        <div style={{ position: 'relative', borderRadius: 'var(--radius-xl)', overflow: 'hidden', boxShadow: 'var(--shadow-md)', aspectRatio: '9/8' }}>
-          <img
-            src="/asset/about-banner.png"
-            alt="SIS Global"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-          />
-          <div style={{ position: 'absolute', bottom: 10, left: 10, background: 'rgba(255,255,255,0.9)', padding: '2px 10px', borderRadius: 'var(--radius-full)', fontSize: 11, fontWeight: 600, color: 'var(--primary)' }}>
-             Backed by SIS India Ltd.
+        {/* About banner */}
+        <section style={{ background: 'linear-gradient(135deg, #F8FAFF 0%, #F0F5FD 100%)', padding: '32px 0' }}>
+          <div className="container">
+            <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 34, alignItems: 'center' }}>
+              <div>
+                <div style={{ position: 'relative', borderRadius: 'var(--radius-xl)', overflow: 'hidden', boxShadow: 'var(--shadow-md)', aspectRatio: '9/8' }}>
+                  <img
+                    src="/asset/about-banner.png"
+                    alt="SIS Global"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  />
+                  <div style={{ position: 'absolute', bottom: 10, left: 10, background: 'rgba(255,255,255,0.9)', padding: '2px 10px', borderRadius: 'var(--radius-full)', fontSize: 11, fontWeight: 600, color: 'var(--primary)' }}>
+                    Backed by SIS India Ltd.
+                  </div>
+                </div>
+              </div>
+              <div>
+                <span className="section-tag" style={{ marginBottom: 6, fontSize: 13, padding: '2px 12px' }}>About Company</span>
+                <h2 style={{ fontSize: 'clamp(22px, 3vw, 28px)', fontWeight: 700, marginBottom: 12, lineHeight: 1.2 }}>
+                  SIS Global Workforce Solutions
+                </h2>
+                <p style={{ fontSize: 14, color: 'var(--gray-700)', lineHeight: 1.5, marginBottom: 12 }}>
+                  <strong>SIS Global Workforce Solutions Private Limited</strong> is a new venture of SIS India Ltd., designed to deliver structured and scalable workforce outsourcing solutions.
+                </p>
+                <p style={{ fontSize: 14, color: 'var(--gray-700)', lineHeight: 1.5, marginBottom: 12 }}>
+                  The company connects skilled talent with trusted employers through a technology-enabled ecosystem – ensuring transparency, efficiency, and reliability.
+                </p>
+                <p style={{ fontSize: 14, color: 'var(--gray-700)', lineHeight: 1.5, marginBottom: 16 }}>
+                  Backed by SIS India's legacy, SIS Global transforms manpower outsourcing into an organized, compliant, and digitally driven service model.
+                </p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 20 }}>
+                  {['End-to-End Solutions', 'Structured & Transparent', 'Technology-Driven', 'Faster Turnaround'].map((item) => (
+                    <span key={item} className="badge badge-blue" style={{ fontSize: 12, padding: '3px 10px' }}>✓ {item}</span>
+                  ))}
+                </div>
+                <div style={{ display: 'flex', gap: 12 }}>
+                  <button className="btn btn-primary" style={{ padding: '8px 20px', fontSize: 13 }}>Learn More →</button>
+                  <button className="btn btn-outline" style={{ padding: '8px 20px', fontSize: 13 }}>Contact Us</button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-
-      {/* Right: Content - tighter spacing */}
-      <div>
-        <span className="section-tag" style={{ marginBottom: 6, fontSize: 12, padding: '2px 12px' }}>About Company</span>
-        <h2 style={{ fontSize: 'clamp(22px, 3vw, 28px)', fontWeight: 700, marginBottom: 12, lineHeight: 1.2 }}>
-          SIS Global Workforce Solutions
-        </h2>
-        <p style={{ fontSize: 13.5, color: 'var(--gray-700)', lineHeight: 1.5, marginBottom: 12 }}>
-          <strong>SIS Global Workforce Solutions Private Limited</strong> is a new venture of SIS India Ltd., designed to deliver structured and scalable workforce outsourcing solutions.
-        </p>
-        <p style={{ fontSize: 13.5, color: 'var(--gray-700)', lineHeight: 1.5, marginBottom: 12 }}>
-          The company connects skilled talent with trusted employers through a technology-enabled ecosystem – ensuring transparency, efficiency, and reliability.
-        </p>
-        <p style={{ fontSize: 13.5, color: 'var(--gray-700)', lineHeight: 1.5, marginBottom: 16 }}>
-          Backed by SIS India’s legacy, SIS Global transforms manpower outsourcing into an organized, compliant, and digitally driven service model.
-        </p>
-
-        {/* Highlight badges - compact row */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 20 }}>
-          {['End-to-End Solutions', 'Structured & Transparent', 'Technology-Driven', 'Faster Turnaround'].map((item) => (
-            <span key={item} className="badge badge-blue" style={{ fontSize: 11, padding: '3px 10px' }}>✓ {item}</span>
-          ))}
-        </div>
-
-        {/* Buttons */}
-        <div style={{ display: 'flex', gap: 12 }}>
-          <button className="btn btn-primary" style={{ padding: '8px 20px', fontSize: 13 }}>Learn More →</button>
-          <button className="btn btn-outline" style={{ padding: '8px 20px', fontSize: 13 }}>Contact Us</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-       
+        </section>
 
         {/* CATEGORIES */}
         <section className="section" style={{ background: 'var(--gray-50)' }}>
@@ -206,12 +188,12 @@ export default function HomePage({ featuredJobs, categories, stats, testimonials
         </section>
 
         {/* TOP EMPLOYERS */}
-        <section className="section" style={{ background: 'var(--gray-50)' }}>
+        {/* <section className="section" style={{ background: 'var(--gray-50)' }}>
           <div className="container">
             <div className="section-header">
               <span className="section-tag">Top Employers</span>
               <h2 className="section-title">Leading Companies Hiring Now</h2>
-              <p className="section-subtitle">Join thousands of companies using TalentFlow to find talent</p>
+              <p className="section-subtitle">Join thousands of companies using SIS Global to find talent</p>
             </div>
             <div className="grid-4">
               {topEmployers.map((emp) => (
@@ -237,7 +219,7 @@ export default function HomePage({ featuredJobs, categories, stats, testimonials
               <Link href="/employers" className="btn btn-outline">Browse All Companies →</Link>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* HOW IT WORKS */}
         <section className="section">
@@ -311,7 +293,7 @@ export default function HomePage({ featuredJobs, categories, stats, testimonials
         </section>
 
         {/* CTA BANNER */}
-        <section style={{ background: 'var(--gray-50)', padding: '64px 0' }}>
+        {/* <section style={{ background: 'var(--gray-50)', padding: '64px 0' }}>
           <div className="container">
             <div style={{
               background: 'white', borderRadius: 'var(--radius-xl)', padding: '48px',
@@ -333,8 +315,104 @@ export default function HomePage({ featuredJobs, categories, stats, testimonials
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
+
+<section style={{ background: 'var(--gray-50)', padding: 'clamp(32px, 8vw, 64px) 0' }}>
+  <div className="container">
+    <div style={{
+      background: 'white', borderRadius: 'var(--radius-xl)', 
+      padding: 'clamp(24px, 5vw, 48px)',
+      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+      gap: 'clamp(20px, 4vw, 32px)', flexWrap: 'wrap', 
+      boxShadow: 'var(--shadow-lg)', border: '1px solid var(--gray-200)',
+    }}>
+      <div style={{ flex: 1 }}>
+        <h2 style={{ fontSize: 'clamp(20px, 5vw, 32px)', fontWeight: 700, marginBottom: 8 }}>
+          Are you an employer?
+        </h2>
+        <p style={{ fontSize: 'clamp(14px, 4vw, 16px)', color: 'var(--gray-600)' }}>
+          Post a job today and reach thousands of qualified candidates instantly.
+        </p>
+      </div>
+      <div className="cta-buttons" style={{ 
+        display: 'flex', gap: 16, flexShrink: 0,
+      }}>
+        <Link href="/find-jobs" className="btn btn-outline">Browse Candidates</Link>
+        <Link href="/pricing" className="btn btn-primary">Post a Job →</Link>
+      </div>
+    </div>
+  </div>
+
+</section>
       </Layout>
+
+      {/* Responsive CSS - only styles, no content changes */}
+      <style jsx global>{`
+        @media (max-width: 768px) {
+          .container {
+            padding-left: 20px;
+            padding-right: 20px;
+          }
+          .grid-3, .grid-4 {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+          }
+          .stats-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 20px !important;
+          }
+          .about-grid {
+            grid-template-columns: 1fr !important;
+            gap: 24px !important;
+          }
+          .about-grid > div:first-child {
+            max-width: 280px;
+            margin: 0 auto;
+          }
+          .section {
+            padding: 48px 0 !important;
+          }
+          .card {
+            padding: 20px !important;
+          }
+          .btn {
+            width: 100%;
+            text-align: center;
+            justify-content: center;
+          }
+          .cta-flex {
+            flex-direction: column;
+            text-align: center;
+          }
+          [style*="display: flex"][style*="justify-content: space-between"] {
+            flex-direction: column;
+            align-items: center !important;
+            text-align: center;
+          }
+          .hero-buttons {
+            flex-direction: column;
+            width: 100%;
+          }
+          .hero-buttons a, .hero-buttons button {
+            width: 100%;
+          }
+        }
+        @media (max-width: 480px) {
+          .stats-grid {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
+          .section-title {
+            font-size: 24px !important;
+          }
+          .section-subtitle {
+            font-size: 14px !important;
+          }
+          .testimonial-card {
+            padding: 20px !important;
+          }
+        }
+      `}</style>
     </>
   )
 }
@@ -351,3 +429,5 @@ export async function getServerSideProps() {
     },
   }
 }
+
+

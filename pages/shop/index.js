@@ -7,7 +7,7 @@ import { PRODUCTS } from '../../lib/data'
 export default function ShopPage({ products }) {
   return (
     <>
-      <Head><title>Shop – TalentFlow Career Store</title></Head>
+      <Head><title>Shop – SIS Global Workforce Solutions Career Store</title></Head>
       <Layout>
         <div style={{ background: 'linear-gradient(135deg, #EBF4FF 0%, #F0F7FF 100%)', padding: '56px 0' }}>
           <div className="container" style={{ textAlign: 'center' }}>

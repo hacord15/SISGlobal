@@ -7,7 +7,7 @@ import { PLANS } from '../../lib/data'
 export default function PricingPage({ plans }) {
   return (
     <>
-      <Head><title>Pricing – TalentFlow</title></Head>
+      <Head><title>Pricing – SIS Global Workforce Solutions</title></Head>
       <Layout>
         <div style={{ background: 'linear-gradient(135deg, #EBF4FF 0%, #F0F7FF 100%)', padding: '64px 0' }}>
           <div className="container" style={{ textAlign: 'center' }}>

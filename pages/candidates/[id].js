@@ -8,7 +8,7 @@ export default function CandidateDetailPage({ candidate }) {
   if (!candidate) return null
   return (
     <>
-      <Head><title>{candidate.name} – TalentFlow</title></Head>
+      <Head><title>{candidate.name} – SIS Global Workforce Solutions</title></Head>
       <Layout>
         <div style={{ background: 'linear-gradient(135deg, #EBF4FF 0%, #F0F7FF 100%)', padding: '48px 0' }}>
           <div className="container">

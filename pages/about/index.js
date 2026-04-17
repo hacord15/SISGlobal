@@ -16,7 +16,7 @@ const TEAM = [
 export default function AboutPage({ stats }) {
   return (
     <>
-      <Head><title>About Us – TalentFlow</title></Head>
+      <Head><title>About Us – SIS Global Workforce Solutions</title></Head>
       <Layout>
         {/* Hero */}
         <div style={{ background: 'linear-gradient(135deg, #EBF4FF 0%, #F0F7FF 100%)', padding: '80px 0' }}>
@@ -26,7 +26,7 @@ export default function AboutPage({ stats }) {
               We're on a Mission to Connect <span style={{ color: 'var(--primary)' }}>People with Purpose</span>
             </h1>
             <p style={{ fontSize: 18, color: 'var(--gray-600)', lineHeight: 1.7 }}>
-              TalentFlow was founded in 2019 with one simple belief: every person deserves a job that excites them, and every company deserves a team that drives them forward.
+              SIS Global Workforce Solutions was founded in 2019 with one simple belief: every person deserves a job that excites them, and every company deserves a team that drives them forward.
             </p>
           </div>
         </div>
@@ -61,7 +61,7 @@ export default function AboutPage({ stats }) {
                   Our founding team spent years on both sides of the hiring table — as job seekers frustrated with impersonal platforms, and as hiring managers drowning in unqualified applications.
                 </p>
                 <p style={{ fontSize: 16, color: 'var(--gray-600)', lineHeight: 1.8, marginBottom: 28 }}>
-                  We built TalentFlow to solve both problems simultaneously: a platform that's intelligent enough to match the right people with the right roles, and transparent enough that everyone knows where they stand.
+                  We built SIS Global Workforce Solutions to solve both problems simultaneously: a platform that's intelligent enough to match the right people with the right roles, and transparent enough that everyone knows where they stand.
                 </p>
                 <div style={{ display: 'flex', gap: 16 }}>
                   <Link href="/find-jobs" className="btn btn-primary">Find Jobs</Link>
@@ -91,7 +91,7 @@ export default function AboutPage({ stats }) {
           <div className="container">
             <div className="section-header">
               <span className="section-tag">Our Team</span>
-              <h2 className="section-title">Meet the People Behind TalentFlow</h2>
+              <h2 className="section-title">Meet the People Behind SIS Global Workforce Solutions</h2>
               <p className="section-subtitle">A diverse team of passionate professionals committed to your success</p>
             </div>
             <div className="grid-3">

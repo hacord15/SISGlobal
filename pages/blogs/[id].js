@@ -11,7 +11,7 @@ export default function BlogDetailPage({ post, related }) {
 
   return (
     <>
-      <Head><title>{post.title} – TalentFlow Blog</title></Head>
+      <Head><title>{post.title} – SIS Global Workforce Solutions Blog</title></Head>
       <Layout>
         <div style={{ background: `linear-gradient(135deg, ${color}18 0%, ${color}08 100%)`, padding: '56px 0' }}>
           <div className="container" style={{ maxWidth: 800 }}>
@@ -64,7 +64,7 @@ export default function BlogDetailPage({ post, related }) {
               <div style={{ width: 64, height: 64, borderRadius: '50%', background: color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, fontWeight: 700, color: 'white', flexShrink: 0 }}>{post.authorAvatar}</div>
               <div>
                 <div style={{ fontSize: 16, fontWeight: 700, marginBottom: 4 }}>{post.author}</div>
-                <div style={{ fontSize: 13, color: 'var(--gray-500)', marginBottom: 8 }}>Career Expert & Content Strategist at TalentFlow</div>
+                <div style={{ fontSize: 13, color: 'var(--gray-500)', marginBottom: 8 }}>Career Expert & Content Strategist at SIS Global Workforce Solutions</div>
                 <p style={{ fontSize: 14, color: 'var(--gray-600)', lineHeight: 1.6 }}>Passionate about helping professionals navigate their career journeys with confidence and clarity.</p>
               </div>
             </div>

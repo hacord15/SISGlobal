@@ -17,7 +17,7 @@ const CAT_COLORS = {
 export default function BlogsPage({ posts, featured, total }) {
   return (
     <>
-      <Head><title>Career Blog – TalentFlow</title></Head>
+      <Head><title>Career Blog – SIS Global Workforce Solutions</title></Head>
       <Layout>
         {/* Hero */}
         <div style={{ background: 'linear-gradient(135deg, #EBF4FF 0%, #F0F7FF 100%)', padding: '56px 0' }}>

@@ -11,13 +11,13 @@ const FAQAccordion = dynamic(() => import('../../components/csr/FAQAccordion'), 
 export default function FAQsPage({ faqs }) {
   return (
     <>
-      <Head><title>FAQ – TalentFlow</title></Head>
+      <Head><title>FAQ – SIS Global Workforce Solutions</title></Head>
       <Layout>
         <div style={{ background: 'linear-gradient(135deg, #EBF4FF 0%, #F0F7FF 100%)', padding: '64px 0' }}>
           <div className="container" style={{ textAlign: 'center' }}>
             <span className="section-tag">Help Center</span>
             <h1 className="section-title" style={{ marginTop: 8 }}>Frequently Asked Questions</h1>
-            <p className="section-subtitle">Everything you need to know about TalentFlow</p>
+            <p className="section-subtitle">Everything you need to know about SIS Global Workforce Solutions</p>
             <div style={{ marginTop: 28, display: 'flex', gap: 12, maxWidth: 480, margin: '28px auto 0' }}>
               <input className="form-input" placeholder="Search questions..." />
               <button className="btn btn-primary">Search</button>

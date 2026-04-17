@@ -13,7 +13,7 @@ export default function FindJobsPage({ jobs, total, categories, query, location,
   return (
     <>
       <Head>
-        <title>Find Jobs – TalentFlow</title>
+        <title>Find Jobs – SIS Global Workforce Solutions</title>
       </Head>
       <Layout>
         {/* Page Header */}

@@ -9,10 +9,10 @@ const INVOICE = {
   dueDate: 'January 14, 2025',
   status: 'Paid',
   from: {
-    name: 'TalentFlow Inc.',
+    name: 'SIS Global Workforce Solutions Inc.',
     address: '123 Market Street, Suite 400',
     city: 'San Francisco, CA 94105',
-    email: 'billing@talentflow.com',
+    email: 'billing@SIS Global Workforce Solutions.com',
   },
   to: {
     name: 'Acme Corp.',
@@ -33,7 +33,7 @@ const INVOICE = {
 export default function InvoicePage({ invoice }) {
   return (
     <>
-      <Head><title>Invoice {invoice.number} – TalentFlow</title></Head>
+      <Head><title>Invoice {invoice.number} – SIS Global Workforce Solutions</title></Head>
       <Layout>
         <div style={{ background: 'var(--gray-50)', padding: '48px 0' }}>
           <div className="container">
@@ -56,7 +56,7 @@ export default function InvoicePage({ invoice }) {
                   <div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
                       <div style={{ width: 40, height: 40, background: 'white', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 700, color: 'var(--primary)' }}>T</div>
-                      <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 20, color: 'white' }}>TalentFlow</span>
+                      <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 20, color: 'white' }}>SIS Global Workforce Solutions</span>
                     </div>
                     <div style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7 }}>
                       {invoice.from.address}<br />
@@ -135,7 +135,7 @@ export default function InvoicePage({ invoice }) {
                   {/* Notes */}
                   <div style={{ marginTop: 40, padding: '20px', background: 'var(--gray-50)', borderRadius: 'var(--radius-lg)', fontSize: 14, color: 'var(--gray-600)', lineHeight: 1.7 }}>
                     <strong style={{ color: 'var(--dark)' }}>Notes: </strong>
-                    Thank you for your business! Payment is due within 30 days. For questions about this invoice, contact billing@talentflow.com.
+                    Thank you for your business! Payment is due within 30 days. For questions about this invoice, contact billing@SIS Global Workforce Solutions.com.
                   </div>
                 </div>
               </div>
