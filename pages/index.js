@@ -133,8 +133,8 @@ export default function HomePage({ featuredJobs, categories, stats, testimonials
                   ))}
                 </div>
                 <div style={{ display: 'flex', gap: 12 }}>
-                  <button className="btn btn-primary" style={{ padding: '8px 20px', fontSize: 13 }}>Learn More →</button>
-                  <button className="btn btn-outline" style={{ padding: '8px 20px', fontSize: 13 }}>Contact Us</button>
+                  <Link href="/about" className="btn btn-primary" style={{ padding: '8px 20px', fontSize: 13 }}>Learn More →</Link>
+                  <Link href="/contact" className="btn btn-outline" style={{ padding: '8px 20px', fontSize: 13 }}>Contact Us</Link>
                 </div>
               </div>
             </div>
@@ -222,7 +222,7 @@ export default function HomePage({ featuredJobs, categories, stats, testimonials
         </section> */}
 
         {/* HOW IT WORKS */}
-        <section className="section">
+        <section className="section" trusted employers through a technology>
           <div className="container">
             <div className="section-header">
               <span className="section-tag">How It Works</span>
