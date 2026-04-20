@@ -112,13 +112,45 @@ export default function JobDetailPage({ job, related }) {
                 </div>
 
                 <div className="sidebar-filter">
-                  <h3 style={{ fontSize: 17, fontWeight: 700, marginBottom: 16 }}>Tags</h3>
+                  <h3 style={{ fontSize: 17, fontWeight: 700, marginBottom: 16 }}>
+                    Required Documents</h3>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                    {job.tags.map((tag) => (
-                      <span key={tag} className="tag">{tag}</span>
-                    ))}
+                    {/* 🔥 Documents */}
+    {job.documents?.map((doc) => (
+      <span key={doc.id} className="tag">
+        {doc.document_name} ({doc.is_required ? "Req" : "Opt"})
+      </span>
+    ))}
                   </div>
                 </div>
+
+<div className="sidebar-filter">
+  <h3 style={{ fontSize: 17, fontWeight: 700, marginBottom: 16 }}>Tags</h3>
+
+  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+
+    {/* Existing tags */}
+    {job.tags.map((tag) => (
+      <span key={tag} className="tag">{tag}</span>
+    ))}
+
+    {/* 🔥 NEW: Job Info Tags */}
+    <span className="tag">Code: {job.jobCode}</span>
+    <span className="tag">Status: {job.status}</span>
+    <span className="tag">Vacancies: {job.vacancy}</span>
+    <span className="tag">Salary: {job.salary}</span>
+
+    {/* 🔥 Locations */}
+    {job.locations?.map((loc, i) => (
+      <span key={i} className="tag">
+         {loc.city_name}
+      </span>
+    ))}
+
+    
+
+  </div>
+</div>
               </div>
             </div>
 
@@ -149,9 +181,59 @@ export default function JobDetailPage({ job, related }) {
   )
 }
 
+//CALLING LOCAL DB 
+
+// export async function getServerSideProps({ params }) {
+//   const job = JOBS.find((j) => j.id === parseInt(params.id))
+//   if (!job) return { notFound: true }
+//   const related = JOBS.filter((j) => j.category === job.category && j.id !== job.id).slice(0, 3)
+//   return { props: { job, related } }
+// }
+
+
 export async function getServerSideProps({ params }) {
-  const job = JOBS.find((j) => j.id === parseInt(params.id))
-  if (!job) return { notFound: true }
-  const related = JOBS.filter((j) => j.category === job.category && j.id !== job.id).slice(0, 3)
-  return { props: { job, related } }
+  try {
+    const res = await fetch(
+      `https://uatsisglobalapi.neuralinfo.co.in/public/jobs/${params.id}`
+    )
+    const data = await res.json()
+
+    const j = data.job
+
+    // 🔥 Map API → your existing JOB structure
+    const job = {
+      id: j.job_id,
+      title: j.job_title,
+      company: j.category_name || "Company",
+      logo: j.job_title?.charAt(0) || "J",
+      logoColor: "#2563EB",
+      location: j.locations?.[0]?.city_name || j.country_name,
+      type: j.employment_type_name,
+      salary: `${j.salary_min} - ${j.salary_max}`,
+      posted: new Date(j.created_at).toLocaleDateString(),
+      category: j.category_name,
+      experience: j.min_experience,
+      tags: [],
+      description: j.job_description,
+      jobCode: j.job_code,
+      status: j.status,
+      vacancy: j.vacancy,
+      locations: data.locations || [],
+      documents: data.documents || [],
+
+    }
+
+    // keep related logic SAME
+    const related = []
+
+    return {
+      props: {
+        job,
+        related,
+      },
+    }
+  } catch (error) {
+    console.error(error)
+    return { notFound: true }
+  }
 }

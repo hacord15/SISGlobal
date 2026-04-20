@@ -25,11 +25,17 @@ export default function EmployersPage({ employers, total }) {
         <div className="section">
           <div className="container">
             {/* Stats row */}
-            <div style={{ display: 'flex', gap: 24, marginBottom: 36, flexWrap: 'wrap' }}>
+            {/* <div style={{ display: 'flex', gap: 24, marginBottom: 36, flexWrap: 'wrap' }}>
               {['All Industries', 'Technology', 'Finance', 'Healthcare', 'Marketing', 'E-Commerce'].map((ind, i) => (
                 <button key={ind} className={`tag ${i === 0 ? 'active' : ''}`}>{ind}</button>
               ))}
-            </div>
+            </div> */}
+
+<div style={{ display: 'flex', gap: 24, marginBottom: 36, flexWrap: 'wrap' }}>
+  {['All Industries', 'Security', 'Healthcare', 'Logistics', 'Manufacturing', 'Facility Management'].map((ind, i) => (
+    <button key={ind} className={`tag ${i === 0 ? 'active' : ''}`}>{ind}</button>
+  ))}
+</div>
 
             <div className="grid-4">
               {employers.map((emp) => (

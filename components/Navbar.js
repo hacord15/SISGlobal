@@ -8,7 +8,7 @@
 //   { label: 'Employers', href: '/employers' },
 //   // { label: 'Candidates', href: '/candidates' },
 //   { label: 'Partner', href: '#' },
-  
+
 
 //   // { label: 'Blog', href: '/blogs' },
 //   {
@@ -74,7 +74,7 @@
 //     alt="SIS Global Workforce Solutions Logo"
 //     style={{
 //       height: '70px',
-      
+
 //       width: 'auto',
 //       objectFit: 'contain'
 //     }}
@@ -238,7 +238,15 @@ import { useRouter } from 'next/router'
 
 const NAV_LINKS = [
   { label: 'Find Jobs', href: '/find-jobs' },
-  { label: 'Employers', href: '/employers' },
+  {
+    label: 'Employers',
+    children: 
+    [
+      
+      { label: 'Employee', href: '/employers' },
+      { label: 'Employer Dashboard', href: '/empDash' }
+    ]
+  },
   { label: 'Partner', href: '#' },
   {
     label: 'About Us',
@@ -250,6 +258,7 @@ const NAV_LINKS = [
       { label: 'Contact Us', href: '/contact' },
     ],
   },
+
 ]
 
 export default function Navbar() {

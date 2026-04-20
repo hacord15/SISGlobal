@@ -115,10 +115,63 @@ export default function FindJobsPage({ jobs, total, categories, query, location,
   )
 }
 
+// CALLING FROM LOCAL DB
+//
+// export async function getServerSideProps({ query }) {
+//   const { q, location, category } = query
+//   let jobs = [...JOBS]
+
+//   if (q) jobs = jobs.filter(j => j.title.toLowerCase().includes(q.toLowerCase()) || j.company.toLowerCase().includes(q.toLowerCase()))
+//   if (location) jobs = jobs.filter(j => j.location.toLowerCase().includes(location.toLowerCase()))
+//   if (category) jobs = jobs.filter(j => j.category === category)
+
+//   return {
+//     props: {
+//       jobs,
+//       total: jobs.length,
+//       categories: CATEGORIES,
+//       query: q || null,
+//       location: location || null,
+//       category: category || null,
+//     },
+//   }
+// }
+
+
 export async function getServerSideProps({ query }) {
   const { q, location, category } = query
-  let jobs = [...JOBS]
 
+  let jobs = []
+
+  try {
+    const res = await fetch(
+      "https://uatsisglobalapi.neuralinfo.co.in/public/jobs/preview?status=Open"
+    )
+    const data = await res.json()
+
+    // Map API → your existing JOBS structure
+    jobs = data.map((j) => ({
+      id: j.job_id,
+      title: j.job_title,
+      company: j.category_name || "Company",
+      logo: j.job_title?.charAt(0) || "J",
+      logoColor: "#2563EB",
+      location: j.country_name,
+      type: "Full Time",
+      salary: `${j.salary_min} - ${j.salary_max}`,
+      tags: [],
+      posted: new Date(j.created_at).toLocaleDateString(),
+      urgent: false,
+      category: j.category_name,
+      experience: "N/A",
+      featured: false,
+    }))
+
+  } catch (err) {
+    console.error("API Error:", err)
+  }
+
+  // ✅ KEEP YOUR ORIGINAL FILTER LOGIC (unchanged)
   if (q) jobs = jobs.filter(j => j.title.toLowerCase().includes(q.toLowerCase()) || j.company.toLowerCase().includes(q.toLowerCase()))
   if (location) jobs = jobs.filter(j => j.location.toLowerCase().includes(location.toLowerCase()))
   if (category) jobs = jobs.filter(j => j.category === category)
@@ -127,7 +180,7 @@ export async function getServerSideProps({ query }) {
     props: {
       jobs,
       total: jobs.length,
-      categories: CATEGORIES,
+      categories: [], // keep if you want static categories
       query: q || null,
       location: location || null,
       category: category || null,
