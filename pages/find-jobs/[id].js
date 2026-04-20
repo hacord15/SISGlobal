@@ -78,7 +78,7 @@ export default function JobDetailPage({ job, related }) {
                 ))}
 
                 {/* Apply form */}
-                <div id="apply" style={{ background: 'var(--gray-50)', borderRadius: 'var(--radius-xl)', padding: 32 }}>
+                {/* <div id="apply" style={{ background: 'var(--gray-50)', borderRadius: 'var(--radius-xl)', padding: 32 }}>
                   <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 20 }}>Apply for This Position</h2>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                     <div className="grid-2">
@@ -89,7 +89,7 @@ export default function JobDetailPage({ job, related }) {
                     <div className="form-group"><label className="form-label">Resume / CV</label><input className="form-input" type="file" /></div>
                     <button className="btn btn-primary" style={{ width: 'fit-content', marginTop: 8 }}>Submit Application →</button>
                   </div>
-                </div>
+                </div> */}
               </div>
 
               {/* Sidebar */}
