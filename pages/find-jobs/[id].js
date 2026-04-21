@@ -57,14 +57,18 @@ export default function JobDetailPage({ job, related }) {
               {/* Main */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
                 {[
-                  { title: 'Job Description', content: `We are looking for a talented ${job.title} to join our team at ${job.company}. You'll be working on cutting-edge products that impact millions of users worldwide. This is an exciting opportunity to shape the future of our platform and grow your career in a fast-paced, collaborative environment.` },
-                  { title: 'Key Responsibilities', content: null, bullets: ['Design, develop, and maintain high-quality software components', 'Collaborate with cross-functional teams including design, product, and engineering', 'Write clean, maintainable, well-documented code', 'Participate in code reviews and technical discussions', 'Continuously improve our development processes and tools', 'Mentor junior team members and contribute to team culture'] },
-                  { title: 'Requirements', content: null, bullets: ['3+ years of professional experience in a relevant role', 'Strong proficiency in required technical skills', 'Experience working in an Agile/Scrum environment', 'Excellent communication and collaboration skills', 'Bachelor\'s degree in Computer Science or equivalent experience', 'Passion for building great products at scale'] },
-                  { title: 'Nice to Have', content: null, bullets: ['Experience with our specific tech stack', 'Open source contributions', 'Previous experience at a high-growth startup'] },
+                  { title: 'Job Description', content: `${job.description} ` },
+                  // {sec.html && <div dangerouslySetInnerHTML={{ __html: sec.html }} />},
+                  { title: 'Key Responsibilities', content: `${job.compensation}` },
+                  // { title: 'Requirements', content: null, bullets: ['3+ years of professional experience in a relevant role', 'Strong proficiency in required technical skills', 'Experience working in an Agile/Scrum environment', 'Excellent communication and collaboration skills', 'Bachelor\'s degree in Computer Science or equivalent experience', 'Passion for building great products at scale'] },
+                  // { title: 'Nice to Have', content: null, bullets: ['Experience with our specific tech stack', 'Open source contributions', 'Previous experience at a high-growth startup'] },
                 ].map((sec) => (
                   <div key={sec.title}>
                     <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 16, paddingBottom: 12, borderBottom: '1px solid var(--gray-200)' }}>{sec.title}</h2>
-                    {sec.content && <p style={{ fontSize: 15, color: 'var(--gray-700)', lineHeight: 1.8 }}>{sec.content}</p>}
+                    {/* {sec.content && <p style={{ fontSize: 15, color: 'var(--gray-700)', lineHeight: 1.8 }}>{sec.content}</p>} */}
+                    {sec.content && <div dangerouslySetInnerHTML={{ __html: sec.content }} />}
+
+
                     {sec.bullets && (
                       <ul style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                         {sec.bullets.map((b) => (
@@ -111,46 +115,64 @@ export default function JobDetailPage({ job, related }) {
                   ))}
                 </div>
 
-                <div className="sidebar-filter">
+                {/* <div className="sidebar-filter">
                   <h3 style={{ fontSize: 17, fontWeight: 700, marginBottom: 16 }}>
                     Required Documents</h3>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                    {/* 🔥 Documents */}
-    {job.documents?.map((doc) => (
-      <span key={doc.id} className="tag">
-        {doc.document_name} ({doc.is_required ? "Req" : "Opt"})
-      </span>
-    ))}
+                    
+                    {job.documents?.map((doc) => (
+                      <span key={doc.id} className="tag">
+                        {doc.document_name} ({doc.is_required ? "Req" : "Opt"})
+                      </span>
+                    ))}
+                  </div>
+                </div> */}
+
+
+                <div className="sidebar-filter">
+                  <h3 style={{ fontSize: 17, fontWeight: 700, marginBottom: 16 }}>
+                    Required Documents
+                  </h3>
+
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+
+                    {[...(job.documents || []), ...(job.job_specific_documents || [])].map((doc, i) => (
+                      <span key={doc.id || i} className="tag">
+                        {doc.document_name} ({doc.is_required ? "Req" : "Opt"})
+                      </span>
+                    ))}
+
                   </div>
                 </div>
 
-<div className="sidebar-filter">
-  <h3 style={{ fontSize: 17, fontWeight: 700, marginBottom: 16 }}>Tags</h3>
 
-  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                <div className="sidebar-filter">
+                  <h3 style={{ fontSize: 17, fontWeight: 700, marginBottom: 16 }}>Tags</h3>
 
-    {/* Existing tags */}
-    {job.tags.map((tag) => (
-      <span key={tag} className="tag">{tag}</span>
-    ))}
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
 
-    {/* 🔥 NEW: Job Info Tags */}
-    <span className="tag">Code: {job.jobCode}</span>
-    <span className="tag">Status: {job.status}</span>
-    <span className="tag">Vacancies: {job.vacancy}</span>
-    <span className="tag">Salary: {job.salary}</span>
+                    {/* Existing tags */}
+                    {job.tags.map((tag) => (
+                      <span key={tag} className="tag">{tag}</span>
+                    ))}
 
-    {/* 🔥 Locations */}
-    {job.locations?.map((loc, i) => (
-      <span key={i} className="tag">
-         {loc.city_name}
-      </span>
-    ))}
+                    {/* 🔥 NEW: Job Info Tags */}
+                    <span className="tag">Code: {job.jobCode}</span>
+                    <span className="tag">Status: {job.status}</span>
+                    <span className="tag">Vacancies: {job.vacancy}</span>
+                    <span className="tag">Salary: {job.salary}</span>
 
-    
+                    {/* 🔥 Locations */}
+                    {job.locations?.map((loc, i) => (
+                      <span key={i} className="tag">
+                        {loc.city_name}
+                      </span>
+                    ))}
 
-  </div>
-</div>
+
+
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -215,11 +237,13 @@ export async function getServerSideProps({ params }) {
       experience: j.min_experience,
       tags: [],
       description: j.job_description,
+      compensation: j.compensation_text,
       jobCode: j.job_code,
       status: j.status,
       vacancy: j.vacancy,
       locations: data.locations || [],
       documents: data.documents || [],
+      job_specific_documents: data.job_specific_documents || [],
 
     }
 
