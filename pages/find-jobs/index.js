@@ -138,8 +138,124 @@ export default function FindJobsPage({ jobs, total, categories, query, location,
 // }
 
 
+// export async function getServerSideProps({ query }) {
+//   const { q, location, category, salary, experience} = query
+
+//   let jobs = []
+
+//   try {
+//     const res = await fetch(
+//       "https://uatsisglobalapi.neuralinfo.co.in/public/jobs/preview?status=Open"
+//     )
+//     const data = await res.json()
+
+//     // Map API → your existing JOBS structure
+//     jobs = data.map((j) => ({
+//       id: j.job_id,
+//       title: j.job_title,
+//       company: j.category_name || "Company",
+//       logo: j.job_title?.charAt(0) || "J",
+//       logoColor: "#2563EB",
+//       location: j.country_name,
+//       type: "Full Time",
+//       // salary: `${j.salary_min} - ${j.salary_max}`,
+//       salaryMin: Number(j.salary_min),
+//       salaryMax: Number(j.salary_max),
+//       salary: `${j.salary_min} - ${j.salary_max}`,
+//       tags: [],
+//       posted: new Date(j.created_at).toLocaleDateString(),
+//       urgent: false,
+//       category: j.category_name,
+//       experience: Number(j.min_experience),
+//       featured: false,
+//     }))
+
+//   } catch (err) {
+//     console.error("API Error:", err)
+//   }
+
+
+//   const parseExperienceRange = (range) => {
+//     if (range.includes('VP')) {
+//       return { min: 10, max: 15 }
+//     }
+  
+//     const match = range.match(/\((\d+)-(\d+)/)
+  
+//     if (!match) return null
+  
+//     return {
+//       min: Number(match[1]),
+//       max: Number(match[2]),
+//     }
+//   }
+
+ 
+
+//   if (salary) {
+
+
+
+//     if (experience) {
+//       const selectedExp = experience.split(',')
+    
+//       jobs = jobs.filter(job => {
+//         return selectedExp.some(range => {
+//           const parsed = parseExperienceRange(range)
+//           if (!parsed) return false
+    
+//           const { min, max } = parsed
+    
+//           return job.experience >= min && job.experience <= max
+//         })
+//       })
+//     }
+
+
+//     const selectedRanges = salary.split(',')
+  
+//     jobs = jobs.filter(job => {
+//       return selectedRanges.some(range => {
+//         const { min, max } = parseSalaryRange(range)
+  
+//         return (
+//           job.salaryMin <= max &&
+//           job.salaryMax >= min
+//         )
+//       })
+//     })
+//   }
+
+//   // ✅ KEEP YOUR ORIGINAL FILTER LOGIC (unchanged)
+//   if (q) jobs = jobs.filter(j => j.title.toLowerCase().includes(q.toLowerCase()) || j.company.toLowerCase().includes(q.toLowerCase()))
+//   if (location) jobs = jobs.filter(j => j.location.toLowerCase().includes(location.toLowerCase()))
+//   // 🔥 FIXED CATEGORY FILTER
+//   const selectedCategories = category
+//     ? category.split(',')
+//     : []
+
+//   if (selectedCategories.length) {
+//     jobs = jobs.filter(j =>
+//       selectedCategories
+//         .map(c => c.toLowerCase())
+//         .includes(j.category?.toLowerCase())
+//     )
+//   }
+
+//   return {
+//     props: {
+//       jobs,
+//       total: jobs.length,
+//       categories: [], // keep if you want static categories
+//       query: q || null,
+//       location: location || null,
+//       category: category || null,
+//     },
+//   }
+// }
+
 export async function getServerSideProps({ query }) {
-  const { q, location, category } = query
+  const { q, location, category, salary, experience } = query
 
   let jobs = []
 
@@ -148,8 +264,9 @@ export async function getServerSideProps({ query }) {
       "https://uatsisglobalapi.neuralinfo.co.in/public/jobs/preview?status=Open"
     )
     const data = await res.json()
+    console.log("API sample:", data[0])
 
-    // Map API → your existing JOBS structure
+
     jobs = data.map((j) => ({
       id: j.job_id,
       title: j.job_title,
@@ -158,12 +275,20 @@ export async function getServerSideProps({ query }) {
       logoColor: "#2563EB",
       location: j.country_name,
       type: "Full Time",
+
+      // ✅ salary numbers
+      salaryMin: Number(j.salary_min),
+      salaryMax: Number(j.salary_max),
       salary: `${j.salary_min} - ${j.salary_max}`,
+
       tags: [],
       posted: new Date(j.created_at).toLocaleDateString(),
       urgent: false,
       category: j.category_name,
-      experience: "N/A",
+
+      // ✅ experience number
+      experience: j.min_experience ? Number(j.min_experience) : 0,
+
       featured: false,
     }))
 
@@ -171,16 +296,101 @@ export async function getServerSideProps({ query }) {
     console.error("API Error:", err)
   }
 
-  // ✅ KEEP YOUR ORIGINAL FILTER LOGIC (unchanged)
-  if (q) jobs = jobs.filter(j => j.title.toLowerCase().includes(q.toLowerCase()) || j.company.toLowerCase().includes(q.toLowerCase()))
-  if (location) jobs = jobs.filter(j => j.location.toLowerCase().includes(location.toLowerCase()))
-  if (category) jobs = jobs.filter(j => j.category === category)
+  // ✅ Salary parser
+  const parseSalaryRange = (range) => {
+    if (range === '$180k+') {
+      return { min: 180000, max: Infinity }
+    }
+
+    const [min, max] = range.replace(/\$/g, '').split('–')
+
+    return {
+      min: parseInt(min) * 1000,
+      max: parseInt(max) * 1000,
+    }
+  }
+
+  // ✅ Experience parser
+  const parseExperienceRange = (range) => {
+    if (range.includes('VP')) {
+      return { min: 10, max: 15 }
+    }
+
+    const match = range.match(/\((\d+)-(\d+)/)
+
+    if (!match) return null
+
+    return {
+      min: Number(match[1]),
+      max: Number(match[2]),
+    }
+  }
+
+  // 🔍 FILTERS START
+
+  // 🔹 Search
+  if (q) {
+    jobs = jobs.filter(j =>
+      j.title.toLowerCase().includes(q.toLowerCase()) ||
+      j.company.toLowerCase().includes(q.toLowerCase())
+    )
+  }
+
+  // 🔹 Location
+  if (location) {
+    jobs = jobs.filter(j =>
+      j.location.toLowerCase().includes(location.toLowerCase())
+    )
+  }
+
+  // 🔹 Category
+  const selectedCategories = category ? category.split(',') : []
+
+  if (selectedCategories.length) {
+    jobs = jobs.filter(j =>
+      selectedCategories
+        .map(c => c.toLowerCase())
+        .includes(j.category?.toLowerCase())
+    )
+  }
+
+  // 🔹 Salary filter
+  if (salary) {
+    const selectedRanges = salary.split(',')
+
+    jobs = jobs.filter(job =>
+      selectedRanges.some(range => {
+        const { min, max } = parseSalaryRange(range)
+
+        return (
+          job.salaryMin <= max &&
+          job.salaryMax >= min
+        )
+      })
+    )
+  }
+
+  if (experience) {
+    const selectedExp = experience.split(',')
+  
+    jobs = jobs.filter(job =>
+      selectedExp.some(range => {
+        const parsed = parseExperienceRange(range)
+        if (!parsed) return false
+  
+        const { min, max } = parsed
+        // Pass the job if it meets the criteria, OR if the API didn't provide min_experience data (which defaults to 0)
+        return (job.experience >= min && job.experience <= max) || job.experience === 0
+      })
+    )
+  }
 
   return {
+    
     props: {
       jobs,
       total: jobs.length,
-      categories: [], // keep if you want static categories
+      categories: [],
       query: q || null,
       location: location || null,
       category: category || null,

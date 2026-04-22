@@ -16,6 +16,7 @@ export default function HomePage({ featuredJobs, categories, stats, testimonials
     <>
       <Head>
         <title>SIS Global – Workforce Outsourcing Solutions</title>
+        <link rel="icon" sizes="48x48" href="/favicon.ico" />
       </Head>
       <Layout>
         {/* HERO */}
@@ -48,7 +49,7 @@ export default function HomePage({ featuredJobs, categories, stats, testimonials
               <p style={{ fontSize: 18, color: 'var(--gray-600)', marginBottom: 40, maxWidth: 520, margin: '0 auto 40px' }}>
                 Connect with top employers and discover opportunities that align with your skills, values, and career goals.
               </p>
-              
+
               <HeroSearch />
 
               <div style={{ marginTop: 24, display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -317,33 +318,33 @@ export default function HomePage({ featuredJobs, categories, stats, testimonials
           </div>
         </section> */}
 
-<section style={{ background: 'var(--gray-50)', padding: 'clamp(32px, 8vw, 64px) 0' }}>
-  <div className="container">
-    <div style={{
-      background: 'white', borderRadius: 'var(--radius-xl)', 
-      padding: 'clamp(24px, 5vw, 48px)',
-      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      gap: 'clamp(20px, 4vw, 32px)', flexWrap: 'wrap', 
-      boxShadow: 'var(--shadow-lg)', border: '1px solid var(--gray-200)',
-    }}>
-      <div style={{ flex: 1 }}>
-        <h2 style={{ fontSize: 'clamp(20px, 5vw, 32px)', fontWeight: 700, marginBottom: 8 }}>
-          Are you an employer?
-        </h2>
-        <p style={{ fontSize: 'clamp(14px, 4vw, 16px)', color: 'var(--gray-600)' }}>
-          Post a job today and reach thousands of qualified candidates instantly.
-        </p>
-      </div>
-      <div className="cta-buttons" style={{ 
-        display: 'flex', gap: 16, flexShrink: 0,
-      }}>
-        <Link href="/find-jobs" className="btn btn-outline">Browse Candidates</Link>
-        <Link href="/pricing" className="btn btn-primary">Post a Job →</Link>
-      </div>
-    </div>
-  </div>
+        <section style={{ background: 'var(--gray-50)', padding: 'clamp(32px, 8vw, 64px) 0' }}>
+          <div className="container">
+            <div style={{
+              background: 'white', borderRadius: 'var(--radius-xl)',
+              padding: 'clamp(24px, 5vw, 48px)',
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              gap: 'clamp(20px, 4vw, 32px)', flexWrap: 'wrap',
+              boxShadow: 'var(--shadow-lg)', border: '1px solid var(--gray-200)',
+            }}>
+              <div style={{ flex: 1 }}>
+                <h2 style={{ fontSize: 'clamp(20px, 5vw, 32px)', fontWeight: 700, marginBottom: 8 }}>
+                  Are you an employer?
+                </h2>
+                <p style={{ fontSize: 'clamp(14px, 4vw, 16px)', color: 'var(--gray-600)' }}>
+                  Post a job today and reach thousands of qualified candidates instantly.
+                </p>
+              </div>
+              <div className="cta-buttons" style={{
+                display: 'flex', gap: 16, flexShrink: 0,
+              }}>
+                <Link href="/find-jobs" className="btn btn-outline">Browse Candidates</Link>
+                <Link href="/pricing" className="btn btn-primary">Post a Job →</Link>
+              </div>
+            </div>
+          </div>
 
-</section>
+        </section>
       </Layout>
 
       {/* Responsive CSS - only styles, no content changes */}

@@ -162,12 +162,7 @@ export default function JobDetailPage({ job, related }) {
                     <span className="tag">Vacancies: {job.vacancy}</span>
                     <span className="tag">Salary: {job.salary}</span>
 
-                    {/* 🔥 Locations */}
-                    {job.locations?.map((loc, i) => (
-                      <span key={i} className="tag">
-                        {loc.city_name}
-                      </span>
-                    ))}
+                  
 
 
 
